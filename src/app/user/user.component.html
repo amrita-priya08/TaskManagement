@@ -1,12 +1,9 @@
 <div>
-    <!-- event binding like this click event -->
     <button (click)="onSelectUser()">
-        <!-- property binding when binding data simply like this in sqaure bracket -->
         <img 
-        [src]="imagePath()" 
-        alt="selectedUser().name" 
+        [src]="imagePath" 
+        alt="name" 
         />
-        <!-- this binding is called string interpolation {{}} -->
-        <span>{{ selectedUser().name }}</span>
+        <span>{{ name }}</span>
     </button>
 </div>
