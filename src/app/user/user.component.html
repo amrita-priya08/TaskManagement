@@ -1,6 +1,8 @@
 <div>
     <button>
-        <img />
-        <span>NAME</span>
+        <!-- property binding when binding data simply like this in sqaure bracket -->
+        <img [src]="'assets/users/'+ selectedUser.avatar" alt="selectedUser.name" />
+        <!-- this binding is called string interpolation {{}} -->
+        <span>{{ selectedUser.name }}</span>
     </button>
 </div>
