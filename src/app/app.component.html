@@ -3,18 +3,23 @@
   <!-- unordered list -->
 
   <ul id="users">
+    <!-- @for, if etc is supported in agnular 17  -->
     @for(user of users; track user.id) {
     <li>
         <app-user 
-        [avatar]="user.avatar" 
-        [name]="user.name"
+        [user] = user
         (select)="onSelectUser($event)"
         [id]="user.id"
+        [selected]="user.id === selectedUserId"
         />
     </li>
   }
   </ul>
+@if(selectedUserId){
+  <app-task [userId]="selectedUser?.id" [name]="selectedUser?.name" />
 
-<app-task [name]="selectedUser?.name" />
+} @else {
+  <h1>Select a user to see their name</h1>
+}
 
 </main>
