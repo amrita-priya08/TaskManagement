@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { TasksComponent } from "./tasks/tasks.component";
 import { AddTaskComponent } from "./add-task/add-task.component";
+import { NewTaskData } from './task.models';
 
 @Component({
   selector: 'app-task',
@@ -10,7 +11,7 @@ import { AddTaskComponent } from "./add-task/add-task.component";
 })
 export class TaskComponent {
   @Input() name?: string
-  @Input() userId?: string;
+  @Input() userId!: string;
   tasks = [
     {
       id: 't1',
@@ -46,5 +47,18 @@ export class TaskComponent {
   }
   addTask(){
     this.add = true
+  }
+  cancelAddTask(){
+    this.add = false
+  }
+  addedNewTask(task: NewTaskData){
+    this.tasks.push({
+      id: new Date().getTime().toString(),
+      userId: this.userId,
+      title: task.title,
+      summary: task.summary,
+      dueDate: task.date
+    })
+    this.add = false
   }
 }
