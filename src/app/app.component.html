@@ -16,7 +16,7 @@
   }
   </ul>
 @if(selectedUserId){
-  <app-task [userId]="selectedUser?.id" [name]="selectedUser?.name" />
+  <app-task [userId]="selectedUser?.id || ''" [name]="selectedUser?.name" />
 
 } @else {
   <h1>Select a user to see their name</h1>
