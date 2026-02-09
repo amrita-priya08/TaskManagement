@@ -27,6 +27,15 @@ export class TasksService {
           dueDate: '2024-06-15',
         },
       ]
+
+    constructor()
+    {
+      const task = localStorage.getItem('tasks')
+      if(task){
+        this.tasks = JSON.parse(task)
+      }
+
+    }
     getUserTask(userId: string){
         return this.tasks.filter((task) => task.userId === userId)
     }
@@ -39,9 +48,13 @@ export class TasksService {
             summary: task.summary,
             dueDate: task.date
           })
+          this.saveTask()
     }
     removeTask(taskId: string){
         this.tasks = this.tasks.filter((task)=> taskId !== task.id)
-
+        this.saveTask()
+    }
+    private saveTask(){
+      localStorage.setItem('task', JSON.stringify(this.tasks))
     }
 }
