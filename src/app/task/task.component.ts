@@ -13,16 +13,11 @@ export class TaskComponent {
   @Input() name?: string
   @Input() userId!: string;
   add!: boolean
-  // private tasksService = inject(TasksService)
-
   constructor(
     private tasksService: TasksService
   ){}
   get selectedUserTask() {
    return this.tasksService.getUserTask(this.userId)
-  }
-  onTaskComplete(taskId: string){
-    this.tasksService.removeTask(taskId)
   }
   addTask(){
     this.add = true
